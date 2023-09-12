@@ -2,7 +2,7 @@
 
 Estre projeto se trata do  MVP da Disciplina **Desenvolvimento Back-end Avançado** PUC-rio EAD.
 
-O projeto se trata de uma lista de materia escolar, possuindo uma API externa mostrando alguns produtos
+O projeto se trata de uma lista de produtos variados, possuindo uma API externa mostrando alguns produtos
 e com uma API e um bando de dados.
 
 ------
