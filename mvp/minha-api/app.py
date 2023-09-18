@@ -23,16 +23,16 @@ def home():
 @app.get('/external_api_data', tags=[home_tag])
 def fetch_external_api_data():
     try:
-        # Make a GET request to the external API
+        
         response = requests.get('https://fakestoreapi.com/products')
 
-        # Check if the request was successful (status code 200)
+        
         if response.status_code == 200:
-            # Parse the JSON response
+            
             data = response.json()
-            return jsonify(data), 200  # Return the JSON response to the client
+            return jsonify(data), 200  
 
-        # Handle other HTTP status codes if needed
+        
         else:
             return {"message": "Failed to fetch external API data"}, response.status_code
 
@@ -45,7 +45,7 @@ def get_produtos_combinados():
 
     Retorna uma representação combinada dos produtos.
     """
-    # Primeiro, obtenha os produtos da API externa
+    
     try:
         response = requests.get('https://fakestoreapi.com/products')
         if response.status_code == 200:
@@ -55,15 +55,15 @@ def get_produtos_combinados():
     except Exception as e:
         produtos_externos = []
 
-    # Em seguida, obtenha os produtos da sua base de dados
+    
     session = Session()
     produtos_db = session.query(Produto).all()
 
-    # Combine os produtos externos e os produtos do banco de dados
+    
     produtos_combinados = []
 
     for produto_db in produtos_db:
-        # Crie um dicionário para representar cada produto do banco de dados
+        
         produto_combinado = {
             "nome": produto_db.nome,
             "quantidade": produto_db.quantidade,
@@ -71,7 +71,7 @@ def get_produtos_combinados():
         }
         produtos_combinados.append(produto_combinado)
 
-    # Adicione os produtos externos à lista combinada
+    
     produtos_combinados.extend(produtos_externos)
 
     return jsonify(produtos_combinados), 200
@@ -134,17 +134,17 @@ def del_produto(query: ProdutoBuscaSchema):
 
     session = Session()
 
-    # Try to find the product by name in your local database
+    
     produto = session.query(Produto).filter(Produto.nome == produto_nome).first()
 
     if produto:
-        # Product found in the local database, delete it by name
+        
         session.delete(produto)
         session.commit()
         logger.debug(f"Deletado produto: '{produto_nome}'")
         return {"message": "Produto removido", "id": produto_nome}
 
-    # Product not found in the local database
+    
     error_msg = "Produto não encontrado :/"
     logger.warning(f"Erro ao deletar produto: '{produto_nome}', {error_msg}")
     return {"message": error_msg}, 404
@@ -161,11 +161,11 @@ def update_produto(query: ProdutoBuscaSchema, form: ProdutoSchema):
 
     session = Session()
 
-    # Try to find the product by name
+    
     produto = session.query(Produto).filter(Produto.nome == produto_nome).first()
 
     if produto:
-        # Update the product data
+        
         produto.nome = form.nome
         produto.quantidade = form.quantidade
         produto.valor = form.valor
