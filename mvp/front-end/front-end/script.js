@@ -1,4 +1,4 @@
-// Função para carregar os produtos da API
+
 function getList() {
   let url = 'https://fakestoreapi.com/products';
   fetch(url)
@@ -16,7 +16,7 @@ function getList() {
       });
 }
 
-// Função para inserir um item na tabela
+
 function insertList(nameProduct, quantity, price) {
   var item = [nameProduct, quantity, price];
   var table = document.getElementById('myTable');
@@ -34,7 +34,7 @@ function insertList(nameProduct, quantity, price) {
   removeElement();
 }
 
-// Função para adicionar o botão de remoção a cada item
+
 function insertButton(parent) {
   let span = document.createElement('span');
   let txt = document.createTextNode('\u00D7');
@@ -43,7 +43,7 @@ function insertButton(parent) {
   parent.appendChild(span);
 }
 
-// Função para remover um elemento da lista
+
 function removeElement() {
   let close = document.getElementsByClassName('close');
   let i;
@@ -60,7 +60,7 @@ function removeElement() {
   }
 }
 
-// Função para excluir um item da API
+
 function deleteItem(item) {
   let url = 'http://127.0.0.1:5000/produto?nome=' + item;
   fetch(url, {
@@ -72,7 +72,7 @@ function deleteItem(item) {
       });
 }
 
-// Função para adicionar um novo item
+
 function newItem() {
   let inputProduct = document.getElementById('newInput').value;
   let inputQuantity = document.getElementById('newQuantity').value;
@@ -89,7 +89,7 @@ function newItem() {
   }
 }
 
-// Função para enviar um novo item para a API
+
 function postItem(inputProduct, inputQuantity, inputPrice) {
   const formData = new FormData();
   formData.append('nome', inputProduct);
@@ -107,10 +107,10 @@ function postItem(inputProduct, inputQuantity, inputPrice) {
       });
 }
 
-// Adicione um evento de clique ao botão "Carregar Produtos da API"
+
 document.querySelector('button').addEventListener('click', getList);
 
-// Chame a função getList() para carregar os produtos da API inicialmente
+
 getList();
 
 
