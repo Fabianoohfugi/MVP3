@@ -1,8 +1,8 @@
 # Meu Front-End
 
-Este é o front-end do projeto para a materia Desevolvimento full stack.
+Este é o front-end do projeto para a materia Desenvolvimento Back-end Avançado.
 
-Utilizei as linguagens de programação: HTML, CSS e JAVASCRIPT.
+Utilizei as linguagens de programação: HTML, CSS ,JAVASCRIPT,Python.
 
 ---
 ## Como executar
